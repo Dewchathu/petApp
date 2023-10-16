@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'custom_drawer.dart';
+
 class PetProfilePage extends StatelessWidget {
   const PetProfilePage({super.key});
 
@@ -9,6 +11,7 @@ class PetProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Pet Profile'),
       ),
+      drawer: const CustomDrawer(),
       body: const Center(
         child: Text('This is the Pet Profile Page'),
       ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'custom_drawer.dart';
+
 class GeoFencingPage extends StatelessWidget {
   const GeoFencingPage({super.key});
 
@@ -9,6 +11,7 @@ class GeoFencingPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('GeoFencing'),
       ),
+      drawer: const CustomDrawer(),
       body: const Center(
         child: Text('This is the GeoFencing Page'),
       ),
