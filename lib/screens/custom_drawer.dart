@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_new_project/screens/dashboard.dart';
 import 'package:my_new_project/screens/profile.dart';
 
 import 'PetProfile.dart';
@@ -68,7 +69,7 @@ class CustomDrawer extends StatelessWidget {
   void _goToPetProfilePage(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const PetProfilePage(),
+        builder: (context) => const Dashboard(),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_new_project/screens/PetProfile.dart';
 import 'package:my_new_project/screens/custom_drawer.dart';
-import '../helpers/flutterfont.dart';
 import 'data.dart';
 
 class Dashboard extends StatefulWidget {
@@ -11,6 +11,13 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  void _goToPetProfile(BuildContext context, PetData petData) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PetProfilePage(petData: petData)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,15 +101,15 @@ class _DashboardState extends State<Dashboard> {
   }
 
   Widget _buildPetCard(PetData petData) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
-      ),
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: GestureDetector(
-        onTap: () {
-          print('Tapped on ${petData.name}');
-        },
+    return GestureDetector(
+      onTap: () {
+        _goToPetProfile(context, petData);
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Stack(
           children: <Widget>[
             Column(
@@ -161,8 +168,8 @@ class _DashboardState extends State<Dashboard> {
                 padding: const EdgeInsets.all(10.0),
                 child: Icon(
                   petData.gender == Gender.male
-                      ? NewIcons.male
-                      : NewIcons.female,
+                      ? Icons.male
+                      : Icons.female,
                   color: Colors.blue,
                   size: 24.0,
                 ),
@@ -173,4 +180,5 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
+
 }
