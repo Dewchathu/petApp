@@ -121,6 +121,7 @@ class Reminder {
 final List<Medication> sampleMedications = [
   Medication(medicine: 'Medicine A', numberOfTablets: 2, time: 'Morning'),
   Medication(medicine: 'Medicine B', numberOfTablets: 1, time: 'Night'),
+  Medication(medicine: 'Medicine C', numberOfTablets: 1, time: 'Night'),
 ];
 
 // Sample allergies

@@ -14,7 +14,16 @@ class _DashboardState extends State<Dashboard> {
   void _goToPetProfile(BuildContext context, PetData petData) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => PetProfilePage(petData: petData)),
+      MaterialPageRoute(
+        builder: (context) => PetProfilePage(
+          petData: petData,
+          medications: sampleMedications,
+          allergies : sampleAllergies,
+          meals: sampleMeals,
+          vaccinations: sampleVaccinations,
+          reminders: sampleReminders,
+        ),
+      ),
     );
   }
 

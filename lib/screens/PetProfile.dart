@@ -4,8 +4,21 @@ import 'data.dart';
 
 class PetProfilePage extends StatelessWidget {
   final PetData petData;
+  final List<Medication> medications;
+  final List<Allergy> allergies;
+  final List<Meal> meals;
+  final List<Vaccination> vaccinations;
+  final List<Reminder> reminders;
 
-  const PetProfilePage({Key? key, required this.petData}) : super(key: key);
+  const PetProfilePage({
+    Key? key,
+    required this.petData,
+    required this.medications,
+    required this.allergies,
+    required this.meals,
+    required this.vaccinations,
+    required this.reminders,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -133,10 +146,109 @@ class PetProfilePage extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Column(
-                              children: sampleMedications.map((medication) {
-                                return _buildMedicationCard(medication);
-                              }).toList(),
+                            SizedBox(
+                              height: 200.0, // Adjust height as needed
+                              child: ListView.builder(
+                                itemCount: medications.length,
+                                itemBuilder: (context, index) {
+                                  Medication medication = medications[index];
+                                  return Card(
+                                    color: const Color(0xFFE6E6E6),
+                                    margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(16.0), // Add padding
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align data1 and data2 to the right
+                                        children: [
+                                          Text(
+                                            medication.medicine,
+                                            style: const TextStyle(
+                                              fontSize: 24,
+                                            ),
+                                          ),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.end, // Align text to the end (right side)
+                                            children: [
+                                              Text('${medication.numberOfTablets}'),
+                                              Text(medication.time),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  );
+
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text(
+                                    'Allergies',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      TextButton.icon(
+                                        onPressed: () {
+                                          _showAddAllergyDialog(context);
+                                        },
+                                        icon: const Icon(Icons.add),
+                                        label: const Text('Add'),
+                                      ),
+                                      TextButton.icon(
+                                        onPressed: () {
+                                          // Add onPressed action for "Edit"
+                                        },
+                                        icon: const Icon(Icons.delete),
+                                        label: const Text('Remove'),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 180.0, // Adjust height as needed
+                              child: ListView.builder(
+                                itemCount: allergies.length,
+                                itemBuilder: (context, index) {
+                                  Allergy allergy = allergies[index];
+                                  return Card(
+                                    elevation: 0,
+                                    color: Colors.white,
+                                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(16.0), // Add padding
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start, // Align data1 and data2 to the left
+                                        crossAxisAlignment: CrossAxisAlignment.start, // Align data1 and data2 to the left
+                                        children: [
+                                          Text(
+                                            allergy.allergy, // Topic
+                                            style: const TextStyle(
+                                              fontSize: 24,
+                                            ),
+                                          ),Row(
+                                            children: [
+                                              const SizedBox(width: 30),
+                                              Text(allergy.description),
+                                            ],
+                                          ),
+
+                                        ],
+                                      ),
+                                    ),
+                                  );
+
+                                },
+                              ),
                             ),
                           ],
                         ),
@@ -187,28 +299,25 @@ class PetProfilePage extends StatelessWidget {
                             SizedBox(
                               height: 200.0, // Adjust height as needed
                               child: ListView.builder(
-                                itemCount: 10, // Replace with the actual item count
+                                itemCount: meals.length,
                                 itemBuilder: (context, index) {
-                                  // Replace with your card content based on the index
-                                  return const Card(
+                                  Meal meal = meals[index];
+                                  return Card(
                                     color: Color(0xFFE6E6E6),
-                                    margin: EdgeInsets.symmetric(
-                                        vertical: 10.0, horizontal: 16.0),
+                                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
                                     child: Padding(
-                                      padding: EdgeInsets.all(16.0),
+                                      padding: EdgeInsets.all(16.0), // Add padding
                                       child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align data1 and data2 to the right
                                         children: [
                                           Text(
-                                            'data1',
+                                            meal.foodName,
                                             style: TextStyle(
                                               fontSize: 24,
                                             ),
                                           ),
                                           Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                            crossAxisAlignment: CrossAxisAlignment.end, // Align text to the end (right side)
                                             children: [
                                               Text('data2'),
                                               Text('data3'),
@@ -268,13 +377,11 @@ class PetProfilePage extends StatelessWidget {
                                   // Replace with your card content based on the index
                                   return const Card(
                                     color: Color(0xFFE6E6E6),
-                                    margin: EdgeInsets.symmetric(
-                                        vertical: 10.0, horizontal: 16.0),
+                                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
                                     child: Padding(
-                                      padding: EdgeInsets.all(16.0),
+                                      padding: EdgeInsets.all(16.0), // Add padding
                                       child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align data1 and data2 to the right
                                         children: [
                                           Text(
                                             'data1',
@@ -283,8 +390,7 @@ class PetProfilePage extends StatelessWidget {
                                             ),
                                           ),
                                           Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                            crossAxisAlignment: CrossAxisAlignment.end, // Align text to the end (right side)
                                             children: [
                                               Text('data2'),
                                               Text('data3'),
@@ -344,13 +450,11 @@ class PetProfilePage extends StatelessWidget {
                                   // Replace with your card content based on the index
                                   return const Card(
                                     color: Color(0xFFE6E6E6),
-                                    margin: EdgeInsets.symmetric(
-                                        vertical: 10.0, horizontal: 16.0),
+                                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
                                     child: Padding(
-                                      padding: EdgeInsets.all(16.0),
+                                      padding: EdgeInsets.all(16.0), // Add padding
                                       child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align data1 and data2 to the right
                                         children: [
                                           Text(
                                             'data1',
@@ -359,8 +463,7 @@ class PetProfilePage extends StatelessWidget {
                                             ),
                                           ),
                                           Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                            crossAxisAlignment: CrossAxisAlignment.end, // Align text to the end (right side)
                                             children: [
                                               Text('data2'),
                                               Text('data3'),
@@ -376,9 +479,13 @@ class PetProfilePage extends StatelessWidget {
                           ],
                         ),
                       ),
+
                     ],
                   ),
                 ),
+
+
+
               ],
             ),
           ],
@@ -386,7 +493,6 @@ class PetProfilePage extends StatelessWidget {
       ),
     );
   }
-
   Future<void> _showAddMedicationDialog(BuildContext context) async {
     return showDialog<void>(
       context: context,
@@ -400,8 +506,7 @@ class PetProfilePage extends StatelessWidget {
                   decoration: const InputDecoration(labelText: 'Medicine'),
                 ),
                 TextFormField(
-                  decoration:
-                  const InputDecoration(labelText: 'Number of Tablets'),
+                  decoration: const InputDecoration(labelText: 'Number of Tablets'),
                   keyboardType: TextInputType.number,
                 ),
                 TextFormField(
@@ -431,39 +536,77 @@ class PetProfilePage extends StatelessWidget {
     );
   }
 
-  Future<void> _showAddMealDialog(BuildContext context) async {
+  Future<void> _showAddAllergyDialog(BuildContext context) async {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Add Meal'),
+          title: Text('Add Allergy'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 TextFormField(
-                  decoration: const InputDecoration(labelText: 'Time'),
+                  decoration: InputDecoration(labelText: 'Allergy'),
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(labelText: 'Food Name'),
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(labelText: 'Amount'),
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(labelText: 'Notes'),
+                  decoration: InputDecoration(labelText: 'Description'),
                 ),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Cancel'),
+              child: Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: const Text('Add'),
+              child: Text('Add'),
+              onPressed: () {
+                // Add logic to handle adding the allergy here
+                // Extract the values from the text fields and process accordingly
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+  Future<void> _showAddMealDialog(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Add Meal'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Time'),
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Food Name'),
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Amount'),
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Notes'),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Add'),
               onPressed: () {
                 // Add logic to handle adding the meal here
                 // Extract the values from the text fields and process accordingly
@@ -475,37 +618,36 @@ class PetProfilePage extends StatelessWidget {
       },
     );
   }
-
   Future<void> _showAddVaccinationDialog(BuildContext context) async {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Add Vaccination'),
+          title: Text('Add Vaccination'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 TextFormField(
-                  decoration: const InputDecoration(labelText: 'Vaccine Name'),
+                  decoration: InputDecoration(labelText: 'Vaccine Name'),
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(labelText: 'Dose'),
+                  decoration: InputDecoration(labelText: 'Dose'),
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(labelText: 'Date'),
+                  decoration: InputDecoration(labelText: 'Date'),
                 ),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Cancel'),
+              child: Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: const Text('Add'),
+              child: Text('Add'),
               onPressed: () {
                 // Add logic to handle adding the vaccination here
                 // Extract the values from the text fields and process accordingly
@@ -523,31 +665,31 @@ class PetProfilePage extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Add Reminder'),
+          title: Text('Add Reminder'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 TextFormField(
-                  decoration: const InputDecoration(labelText: 'Reminder Name'),
+                  decoration: InputDecoration(labelText: 'Reminder Name'),
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(labelText: 'Time'),
+                  decoration: InputDecoration(labelText: 'Time'),
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(labelText: 'Date'),
+                  decoration: InputDecoration(labelText: 'Date'),
                 ),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Cancel'),
+              child: Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: const Text('Add'),
+              child: Text('Add'),
               onPressed: () {
                 // Add logic to handle adding the reminder here
                 // Extract the values from the text fields and process accordingly
@@ -560,31 +702,5 @@ class PetProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildMedicationCard(Medication medication) {
-    return Card(
-      color: const Color(0xFFE6E6E6),
-      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              medication.medicine,
-              style: const TextStyle(
-                fontSize: 24,
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text('${medication.numberOfTablets}'),
-                Text(medication.time),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
+
 }
