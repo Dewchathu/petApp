@@ -12,7 +12,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _mobileController = TextEditingController();
-  // Add more controllers for other fields
+  TextEditingController _roadController = TextEditingController();
+  TextEditingController _cityController = TextEditingController();
+  TextEditingController _provinceController = TextEditingController();
+
 
   @override
   void initState() {
@@ -21,6 +24,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     _usernameController.text = profiles[0].username;
     _emailController.text = profiles[0].email;
     _mobileController.text = profiles[0].mobile;
+    _roadController.text = profiles[0].road;
+    _cityController.text = profiles[0].city;
+    _provinceController.text = profiles[0].province;
+
     // Initialize other controllers with current data
   }
 
@@ -31,7 +38,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
         title: const Text('Update Profile'),
         backgroundColor: const Color(0xFFA6CF6F),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
+    child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -47,7 +55,19 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               controller: _mobileController,
               decoration: InputDecoration(labelText: 'Mobile'),
             ),
-            // Add more text fields for other profile details
+            TextField(
+              controller: _roadController,
+              decoration: InputDecoration(labelText: 'Road'),
+            ),
+            TextField(
+              controller: _cityController,
+              decoration: InputDecoration(labelText: 'City'),
+            ),
+            TextField(
+              controller: _provinceController,
+              decoration: InputDecoration(labelText: 'Province'),
+            ),
+
 
             const SizedBox(height: 20.0),
             ElevatedButton(
@@ -56,7 +76,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                 profiles[0].username = _usernameController.text;
                 profiles[0].email = _emailController.text;
                 profiles[0].mobile = _mobileController.text;
-                // Update other profile details
+                profiles[0].road = _mobileController.text;
+                profiles[0].city = _mobileController.text;
+                profiles[0].province = _mobileController.text;
+
 
                 // Navigate back to the profile page after updating
                 Navigator.pop(context);
@@ -74,6 +97,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           ],
         ),
       ),
+    ),
     );
   }
 }

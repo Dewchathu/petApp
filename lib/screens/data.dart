@@ -29,9 +29,9 @@ class Profile {
    String username;
    String email;
    String mobile;
-  final String road;
-  final String city;
-  final String province;
+  late final String road;
+  late final String city;
+  late final String province;
   final String password;  // Add this line to include the password
 
   Profile({
@@ -110,11 +110,13 @@ class Reminder {
   final String reminderName;
   final String time;
   final String date;
+  final String notes;
 
   Reminder({
     required this.reminderName,
     required this.time,
     required this.date,
+    required this.notes,
   });
 }
 // Sample medications
@@ -139,11 +141,11 @@ final List<Meal> sampleMeals = [
 // Sample vaccinations
 final List<Vaccination> sampleVaccinations = [
   Vaccination(vaccineName: 'Vaccine 1', dose: '1st Dose', date: '2023-10-15'),
-  Vaccination(vaccineName: 'Vaccine 2', dose: '2nd Dose', date: '2023-11-15'),
+  Vaccination(vaccineName: 'Vaccine 2', dose: '2nd Dose', date: '2023-11-30'),
 ];
 
 // Sample reminders
 final List<Reminder> sampleReminders = [
-  Reminder(reminderName: 'Walk', time: '08:00 AM', date: '2023-10-16'),
-  Reminder(reminderName: 'Grooming', time: '03:00 PM', date: '2023-10-18'),
+  Reminder(reminderName: 'Walk', time: '08:00 AM', date: '2023-10-16',notes: '1 Level'),
+  Reminder(reminderName: 'Grooming', time: '03:00 PM', date: 'Daily',notes: ''),
 ];

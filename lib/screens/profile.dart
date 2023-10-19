@@ -107,7 +107,7 @@ class ProfilePage extends StatelessWidget {
                     const SizedBox(width: 20),
                     ElevatedButton(
                       onPressed: () {
-                        _showEditPassword;
+                        _showEditPassword(context);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -176,31 +176,29 @@ class ProfilePage extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Change Password'),
+          title: const Text('Change Password'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Type Password'),
+                  decoration: const InputDecoration(labelText: 'Type Password'),
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Re-Type Password'),
+                  decoration: const InputDecoration(labelText: 'Re-Type Password'),
                 ),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('Add'),
+              child: const Text('Change'),
               onPressed: () {
-                // Add logic to handle adding the allergy here
-                // Extract the values from the text fields and process accordingly
                 Navigator.of(context).pop();
               },
             ),

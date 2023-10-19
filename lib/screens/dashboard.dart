@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_new_project/screens/PetProfile.dart';
 import 'package:my_new_project/screens/custom_drawer.dart';
+import 'add_petProfile.dart';
 import 'data.dart';
 
 class Dashboard extends StatefulWidget {
@@ -78,6 +79,16 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Navigate to the PetForm screen when FAB is pressed
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PetForm()),
+          );
+        },
+        child: Icon(Icons.add), // You can change the icon as needed
       ),
     );
   }
