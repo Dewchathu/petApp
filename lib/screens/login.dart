@@ -109,7 +109,7 @@ class _LoginFormState extends State<LoginForm> {
             onPressed: _login,
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50.0)
                 ),
@@ -118,7 +118,7 @@ class _LoginFormState extends State<LoginForm> {
                     fontWeight: FontWeight.bold)),
             child: const Text('Log In'),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 30),
           const Text("Forget Password"),
           RichText(
               text: TextSpan(

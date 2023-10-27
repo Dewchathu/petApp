@@ -46,18 +46,13 @@ class _SignInFormState extends State<SignInForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _repasswordController = TextEditingController();
-  final TextEditingController _roadController = TextEditingController();
-  final TextEditingController _cityController = TextEditingController();
-  final TextEditingController _provinceController = TextEditingController();
+
 
 
   void _signIn() {
     String user = _userController.text;
     String mobile = _mobileController.text;
     String email = _emailController.text;
-    String road = _roadController.text;
-    String city = _cityController.text;
-    String province = _provinceController.text;
     String password = _passwordController.text;
     String repassword = _repasswordController.text;
 
@@ -69,9 +64,6 @@ class _SignInFormState extends State<SignInForm> {
     print('Email: $email');
     print('Password: $password');
     print('Repassword: $repassword');
-    print('Road: $road');
-    print('City: $city');
-    print('Province: $province');
 
   }
 
@@ -216,104 +208,13 @@ class _SignInFormState extends State<SignInForm> {
               ),
             ],
           ),
-          const SizedBox(height: 10.0),
-          const Align(
-            alignment: Alignment.centerLeft,
-            child: Text("Address",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-              ),
-            ),
-          ),
 
-          const SizedBox(height: 10.0),
-          Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: _roadController,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: const Color(0xFFA6CF6F),
-                    hintText: 'Road/Lane',
-                    contentPadding: const EdgeInsets.all(14.0),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                  ),
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18.0,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10.0), // Add some spacing between the text fields
-              Expanded(
-                child: TextField(
-                  controller: _provinceController,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: const Color(0xFFA6CF6F),
-                    hintText: 'City',
-                    contentPadding: const EdgeInsets.all(14.0),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                  ),
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18.0,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 10.0),
-          Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: _cityController,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: const Color(0xFFA6CF6F),
-                    hintText: 'Province',
-                    contentPadding: const EdgeInsets.all(14.0),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                  ),
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18.0,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 50.0),
           ElevatedButton(
             onPressed: _signIn,
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.green,
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(50.0),
               ),
@@ -324,7 +225,7 @@ class _SignInFormState extends State<SignInForm> {
             ),
             child: const Text('Sign Up'),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           RichText(
             text: TextSpan(
               children: [
